@@ -97,13 +97,32 @@ First follow
 [the installation instructions for pygit2](http://www.pygit2.org/install.html).
 
 Then clone this repository and follow the standard Python module
-installation route, e.g.
+installation route. This project uses modern Python packaging with `pyproject.toml`:
 
-    python setup.py install
+    pip install .
 
 or if you want to hack on git-deps:
 
     pip install -e .
+
+You can also install with development dependencies:
+
+    pip install -e .[dev]
+
+### Building from source
+
+If you need to build the package yourself:
+
+    pip install build
+    python -m build
+
+This will create both wheel and source distributions in the `dist/` directory.
+
+### Legacy installation (deprecated)
+
+The old `setup.py` method still works but is deprecated:
+
+    python setup.py install
 
 ## Option 4: Installation via Docker
 

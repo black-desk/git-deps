@@ -28,9 +28,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
+        python -m pip install --upgrade pip build
         python -m pip install flake8 pytest pygit2
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        # Install the package in development mode with test dependencies
+        python -m pip install -e .[test]
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -39,7 +40,13 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Install git-deps
       run: |
-        pip install -e .
+        # Package is already installed in development mode above
+        echo "git-deps is already installed with test dependencies"
+    - name: Test package build
+      run: |
+        python -m build
+        # Verify the built package
+        python -m pip install --force-reinstall dist/*.whl
     - name: Test with pytest
       run: |
         pytest

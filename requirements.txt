@@ -1,3 +1,8 @@
+# Production dependencies
+# Note: This project now uses pyproject.toml for dependency management.
+# This file is maintained for backward compatibility.
+# For the authoritative dependency list, see pyproject.toml
+
 pip >= 10.0.1
 pygit2 >= 0.24.0
 flask
