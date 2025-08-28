@@ -70,7 +70,8 @@ git_deps = [
     "html/*.json",
     "html/css/*.css",
     "html/js/*.js",
-    "html/js/*.coffee"
+    "html/js/*.coffee",
+    "html/js/lib/*.js"
 ]
 
 [tool.setuptools.package-dir]
